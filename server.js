@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 
 const connectDB = require('./config/db');
 
@@ -18,8 +19,17 @@ app.use('/api/auth', require('./routes/api/auth'));
 // app.use('/api/sports', require('./routes/api/sports'));
 // app.use('/api/movies', require('./routes/api/movies'));
 
+//Serve static assests if in production
+if (process.env.NODE_ENV === 'production') {
+	//Set static folder
+	app.use(express.static('client/build'));
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+	});
+}
+
 app.get('/', (req, res) => res.send(`API started..`));
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(PORT, () => console.log(`Express surver is up and running!`));
