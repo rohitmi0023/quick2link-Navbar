@@ -2,7 +2,7 @@ import React, { useState, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, FormGroup, Button, Alert, Input, Col, Row } from 'reactstrap';
 import axios from 'axios';
-import NavBar from '../layout/NavBar';
+import NavBar from '../NavBar';
 
 const Login = props => {
 	const [formData, setFormData] = useState({
