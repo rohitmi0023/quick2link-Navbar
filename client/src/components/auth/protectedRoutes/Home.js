@@ -4,9 +4,11 @@ import AuthNavBar from '../../layout/AuthNavBar';
 // import Axios from 'axios';
 
 const Home = props => {
-	if (props.isAuth === false) {
-		return <Redirect to='/forbidden' />;
-	}
+	// if (props.isAuth === false) {
+	// 	return <Redirect to='/forbidden' />;
+	// }
+	const token = localStorage.getItem('token');
+	if (!token) return <Redirect to='/forbidden' />;
 
 	return (
 		<Fragment>

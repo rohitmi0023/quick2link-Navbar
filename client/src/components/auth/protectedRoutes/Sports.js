@@ -3,9 +3,11 @@ import { Redirect } from 'react-router-dom';
 import AuthNavBar from '../../layout/AuthNavBar';
 
 const Sports = props => {
-	if (props.isAuth === false) {
-		return <Redirect to='/forbidden' />;
-	}
+	// if (props.isAuth === false) {
+	// 	return <Redirect to='/forbidden' />;
+	// }
+	const token = localStorage.getItem('token');
+	if (!token) return <Redirect to='/forbidden' />;
 	return (
 		<div>
 			<AuthNavBar />

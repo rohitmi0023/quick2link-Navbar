@@ -4,9 +4,11 @@ import AuthNavBar from '../../layout/AuthNavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Social = props => {
-	if (props.isAuth === false) {
-		return <Redirect to='/forbidden' />;
-	}
+	// if (props.isAuth === false) {
+	// 	return <Redirect to='/forbidden' />;
+	// }
+	const token = localStorage.getItem('token');
+	if (!token) return <Redirect to='/forbidden' />;
 	return (
 		<Fragment>
 			<AuthNavBar />
